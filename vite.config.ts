@@ -1,23 +1,23 @@
-import { defineConfig } from "vite";
-import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
-import viteImagemin from "vite-plugin-imagemin";
-import react from "@vitejs/plugin-react";
-import viteEslint from "vite-plugin-eslint";
-import svgr from "vite-plugin-svgr";
-import path from "path";
+import { defineConfig } from 'vite';
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
+import viteImagemin from 'vite-plugin-imagemin';
+import react from '@vitejs/plugin-react';
+import viteEslint from 'vite-plugin-eslint';
+import svgr from 'vite-plugin-svgr';
+import path from 'path';
 // import viteStylelint from '@amatlash/vite-plugin-stylelint';
 
-const isProduction = process.env.NODE_ENV === "production";
+const isProduction = process.env.NODE_ENV === 'production';
 
-const CDN_URL = "https://cdn.jsdelivr.net/gh/Chocolate1999/cdn/";
+const CDN_URL = 'https://cdn.jsdelivr.net/gh/Chocolate1999/cdn/';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: isProduction ? CDN_URL : "/",
+  base: isProduction ? CDN_URL : '/',
   resolve: {
     // 别名配置
     alias: {
-      "@assets": path.join(__dirname, "src/assets")
+      '@assets': path.join(__dirname, 'src/assets')
     }
   },
   plugins: [
@@ -41,17 +41,17 @@ export default defineConfig({
       svgo: {
         plugins: [
           {
-            name: "removeViewBox"
+            name: 'removeViewBox'
           },
           {
-            name: "removeEmptyAttrs",
+            name: 'removeEmptyAttrs',
             active: false
           }
         ]
       }
     }),
     createSvgIconsPlugin({
-      iconDirs: [path.join(__dirname, "src/assets/icons")]
+      iconDirs: [path.join(__dirname, 'src/assets/icons')]
     })
   ],
   server: {
